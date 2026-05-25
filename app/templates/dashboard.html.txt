@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Web Tuner</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ CPU Web Tuner</h1>
+        
+        <div class="controls">
+            <select id="governor-select">
+                <option value="">Загрузка...</option>
+            </select>
+            <button onclick="setGovernor()">Применить</button>
+            <button onclick="refreshData()">🔄 Обновить</button>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="card">
+                <h3>🌡️ Температуры</h3>
+                <div id="temperatures"></div>
+            </div>
+            
+            <div class="card">
+                <h3>⚡ Частоты (GHz)</h3>
+                <div id="frequencies"></div>
+            </div>
+            
+            <div class="card">
+                <h3>📊 Загрузка CPU</h3>
+                <canvas id="cpuChart"></canvas>
+            </div>
+            
+            <div class="card">
+                <h3>💾 Память</h3>
+                <div id="memory"></div>
+                <canvas id="memoryChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="stats-summary">
+            <h3>📈 Статистика за 24 часа</h3>
+            <div id="stats"></div>
+        </div>
+    </div>
+    
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

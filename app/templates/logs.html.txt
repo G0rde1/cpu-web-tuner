@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Логи - CPU Web Tuner</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Логи системы</h1>
+        <a href="/">← На главную</a>
+        <pre id="logs" class="logs"></pre>
+        <button onclick="loadLogs()">Обновить логи</button>
+    </div>
+    
+    <script>
+        async function loadLogs() {
+            const response = await fetch('/api/logs');
+            const logs = await response.json();
+            document.getElementById('logs').innerText = logs.join('\n');
+        }
+        
+        loadLogs();
+        setInterval(loadLogs, 5000);
+    </script>
+</body>
+</html>

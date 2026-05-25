@@ -1,0 +1,26 @@
+#!/bin/bash
+# systemd сервис для автозапуска
+
+SERVICE_FILE="/etc/systemd/system/cpu-web-tuner.service"
+
+sudo cat > $SERVICE_FILE << EOF
+[Unit]
+Description=CPU Web Tuner Service
+After=network.target
+
+[Service]
+Type=simple
+User=$USER
+WorkingDirectory=/opt/cpu-web-tuner
+ExecStart=/usr/bin/python3 /opt/cpu-web-tuner/run.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable cpu-web-tuner.service
+
+echo "✅ Сервис установлен"

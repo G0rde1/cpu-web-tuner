@@ -1,0 +1,9 @@
+# 1. Установка зависимостей
+sudo apt update
+sudo apt install -y python3 python3-pip lm-sensors linux-tools-common
+
+# 2. Установка Python пакетов
+pip3 install -r requirements.txt
+
+# 3. Запуск
+python3 run.py
